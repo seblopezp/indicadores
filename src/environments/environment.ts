@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: 'https://mindicador.cl/api',
+  news_key: 'e681b1e7f31846a58db0bfa964926e26',
+  news_url: 'http://newsapi.org/v2',
 };
 
 /*

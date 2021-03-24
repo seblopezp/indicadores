@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="indicatorInfo">{{indicatorInfo.nombre | titlecase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+
+      <ion-col size="12">
+        <div class="ion-padding">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Información del indicador
+              </ion-card-subtitle>
+              <ion-card-title>{{indicatorInfo.nombre | titlecase}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>Valor del día: <b>{{actualValue}}</b></p>
+              <p>Unidad de medida: {{indicatorInfo.unidad_medida}}</p>
+              <p>Versión: {{indicatorInfo.version}}</p>
+              <p>Autor: {{indicatorInfo.autor}}</p>
+            </ion-card-content>
+          </ion-card>
+
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <div class="ion-padding">
+          <div class="accordion accordion" id="accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  Valores del indicador
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-bs-parent="#accordion">
+                <div class="accordion-body">
+                  <p *ngFor="let item of indicatorInfo.serie">{{item.fecha | date:'dd/MM/yyyy'}} - <b>{{item.valor}}</b>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="12" class="chart-col">
+        <div class="ion-padding">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="lineChartType"
+            [colors]="chartColors"></canvas>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
