@@ -1,5 +1,5 @@
 # indicadores
-# Prueba 3it
+# App de prueba
 
 Para correr el proyecto primero
 Debemos clonar el proyecto con : 
